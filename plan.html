@@ -1,0 +1,50 @@
+Plan para implementar las funcionalidades en fichaje.php
+1. Análisis y Preparación
+Revisión de la base de datos:
+
+Confirmar que las tablas involucradas (jornadas, pausas, etc.) tienen las columnas necesarias y que las relaciones están correctamente configuradas.
+Revisar los campos esperados y asegurarnos de que los nombres coincidan con lo que usamos en el código.
+Revisión de variables de sesión:
+
+Asegurarnos de que la sesión del usuario logueado contiene todos los datos necesarios, como usuario_id y nombre.
+2. Implementación funcional, paso a paso
+2.1 Funcionalidad del botón "Iniciar Jornada":
+
+Crear el proceso para guardar la hora de inicio, latitud y longitud en la base de datos.
+Asegurarse de que al guardar los datos en la tabla jornadas, estos se registren correctamente.
+Probar con un mensaje de éxito o error.
+2.2 Funcionalidad del botón "Iniciar Pausa":
+
+Crear el proceso para registrar el inicio de una pausa, incluyendo la selección del tipo de pausa.
+Guardar la información en la tabla correspondiente con el ID del usuario y el tipo de pausa.
+Validar que el botón "Reanudar Pausa" se habilite después de registrar la pausa.
+2.3 Funcionalidad del botón "Reanudar Pausa":
+
+Implementar el proceso para actualizar el estado de la pausa como "finalizada".
+Deshabilitar el botón "Reanudar Pausa" y habilitar el botón "Iniciar Pausa".
+2.4 Funcionalidad del botón "Finalizar Jornada":
+
+Crear el proceso para registrar la hora de fin de la jornada.
+Asegurarse de que todos los botones se deshabiliten al finalizar la jornada.
+Probar con un mensaje de éxito o error.
+3. Depuración de errores
+Depuración con mensajes:
+
+Añadir logs y alertas en cada paso para saber si las funciones están ejecutándose correctamente.
+Usar console.log en el frontend y mensajes JSON en el backend.
+Probar cada funcionalidad individualmente:
+
+Asegurarnos de que los datos se están enviando correctamente al backend.
+Validar que los datos lleguen a la base de datos.
+4. Integración final
+Una vez que todas las funcionalidades estén probadas y funcionando individualmente:
+Integrar los botones y el flujo completo en un único archivo.
+Probar con usuarios reales para asegurar que el sistema funcione en todas las combinaciones posibles.
+5. Consideraciones adicionales
+Simplificación para pruebas:
+
+Crear una versión básica de fichaje.php que solo incluya un botón (por ejemplo, "Iniciar Jornada") para pruebas rápidas.
+Una vez que este funcione, migrar la lógica al archivo completo.
+Revisión de permisos:
+
+Asegurarnos de que las operaciones solo puedan ser realizadas por usuarios autenticados y con roles adecuados.

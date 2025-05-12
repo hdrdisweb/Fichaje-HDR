@@ -1,0 +1,76 @@
+<?php
+session_start();
+include 'conexion.php'; // Conexión a la base de datos
+
+// Obtener datos del usuario logueado
+$id = $_SESSION['idPrimaria'] ?? 0; // Asegúrate de que hay un usuario logueado
+$sql = "SELECT nombre, avatar FROM usuarios WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+
+// Configurar avatar y nombre
+$default_avatar = "uploads/avatar.webp"; // Ruta de la imagen por defecto
+$avatar = !empty($user['avatar']) ? $user['avatar'] : $default_avatar;
+$nombre = $user['nombre'] ?? "Usuario";
+?>
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>HDR Diseño Web</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="blocks.css">
+        <link href="style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css">
+    </head>
+    <body>
+        <div class="container">
+</div>
+        <nav class="navbar navbar-dark navbar-expand-lg py-4 py-lg-2 text-uppercase" style="background-color: #e38922;"> 
+            <div class="container"> 
+                <img src="assets/img/hdr_new_logo_350.png" width="130">
+                <ul class="navbar-nav ms-auto d-flex align-items-center" style="flex-direction: row;">
+                    <!-- Avatar y Nombre -->
+                    <!-- Botón de salir -->
+                </ul>
+                <div class="ms-auto ms-lg-2 order-lg-1 w-auto"> <a href="logout.php"><button class="border-0 btn btn-outline-light py-2" type="button" aria-label="search"> <i class="fa-lg fa-sign-out-alt fas"></i> 
+                        </button></a>
+                </div>
+                <div class="ms-auto ms-lg-2 order-lg-1 w-auto"> 
+                    <li class="align-items-center d-flex nav-item"><a href="mi-cuenta.php" class="d-flex align-items-center text-decoration-none"> <img src="<?php echo htmlspecialchars($avatar); ?>" alt="Avatar" class="rounded-circle me-2" width="40" height="40"> <!-- Nombre visible solo en pantallas grandes --> <span class="d-none d-lg-inline text-white" style="font-size: 14px;"><?php echo htmlspecialchars($nombre); ?></span> </a>
+                    </li>
+                </div>                 
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown-21" aria-controls="navbarNavDropdown-21" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> 
+                </button>                 
+                <div class="collapse navbar-collapse " id="navbarNavDropdown-21"> 
+                    <ul class="mb-2 mb-lg-0 ms-auto navbar-nav"> 
+                        <li class="nav-item"> <a class="active nav-link px-lg-3 py-lg-4" aria-current="page" href="#">Escritorio</a> 
+                        </li>                         
+                        <li class="nav-item dropdown"> <a class="nav-link px-lg-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">                                     Usuarios </a> 
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> <a class="dropdown-item" href="#">Listar usuarios</a> <a class="dropdown-item" href="#">Crear usuario</a> 
+                            </div>                             
+                        </li>
+                        <li class="nav-item dropdown"> <a class="nav-link px-lg-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">                                     Usuarios </a> 
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> <a class="dropdown-item" href="#">Listar usuarios</a> <a class="dropdown-item" href="#">Crear usuario</a> 
+                            </div>                             
+                        </li>                         
+                        <li class="nav-item"> <a class="nav-link px-lg-3 py-lg-4" href="#">Contact</a> 
+                        </li>                         
+                    </ul>                     
+                </div>                 
+            </div>             
+        </nav>
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </body>
+</html>

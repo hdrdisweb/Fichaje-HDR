@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Listado de Usuarios</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- DataTables CSS -->
+        <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+        <!-- FontAwesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+        <!-- Animate.css -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <style>thead { background-color: #e3f2fd;  /* Azul celeste suavizado */ }</style>
+    </head>
+    <body>
+        <div class="container mt-5">
+            <!-- Título -->
+            <!-- Tabla dentro de una tarjeta -->
+            <div class="border-0 card shadow-lg">
+                <div class="text-center mb-4">
+                    <h1 class="display-6 fw-bold text-primary" style="margin-top: 50px;">Listado de Usuarios</h1>
+                    <p class="lead">Administra y gestiona los usuarios registrados en el sistema.</p>
+                </div>
+                <div class="card-body shadow" style="padding-left: 40px; padding-right: 40px;">
+                    <table id="usuariosTable" class="table table-striped table-bordered dt-responsive nowrap" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>DNI</th>
+                                <th>Email</th>
+                                <th>Rol</th>
+                                <th>Estado</th>
+                                <th>Telefono</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Ejemplo de datos estáticos (reemplazar con datos dinámicos en el futuro) -->
+                            <tr>
+                                <td>Juan</td>
+                                <td>Pérez</td>
+                                <td>12345678</td>
+                                <td>juan.perez@example.com</td>
+                                <td>Admin</td>
+                                <td>Activo</td>
+                                <td>123456789</td>
+                                <td> <a href="#"><button class="btn btn-sm btn-warning me-1"><i class="fa fa-edit"></i> Editar
+                                        </button></a> <a href="#"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Borrar
+                                        </button></a> </td>
+                            </tr>
+                            <tr>
+                                <td>Maria</td>
+                                <td>Gomez</td>
+                                <td>87654321</td>
+                                <td>maria.gomez@example.com</td>
+                                <td>Usuario</td>
+                                <td>Inactivo</td>
+                                <td>987654321</td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning me-1"><i class="fa fa-edit"></i> Editar
+                                    </button>
+                                    <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Borrar
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- DataTables JS -->
+        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"></script>
+        <!-- Configuración de DataTables -->
+        <script>
+        $(document).ready(function() {
+            $('#usuariosTable').DataTable({
+                responsive: true,
+                language: {
+                    url: "https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+                }
+            });
+        });
+    </script>
+    </body>
+</html>

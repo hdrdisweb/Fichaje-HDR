@@ -1,0 +1,20 @@
+html,
+body {
+    background-image: url('/assets/img/login/fondo_jl.jpg');
+    background-position: center center;
+    height: 100%;
+    font-family: 'Ubuntu', sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    height: 100%;
+    align-content: center;
+}
+
+.card {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+}
